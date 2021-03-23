@@ -8,11 +8,13 @@ export const UserPhoto = styled.header`
   img {
     border-radius: 50%;
     width: 150px;
-    transform: translateX(-50%)
+    transform: translateX(-50%);
   }
 `;
 
 export const FormContainer = styled.form`
+  background-color: var(--bg-secondary);
+
   display: flex;
   flex-direction: column;
   position: relative;
@@ -22,8 +24,8 @@ export const FormContainer = styled.form`
   height: 400px;
   width: 380px;
 
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
   form {
     display: flex;
@@ -38,12 +40,13 @@ export const FormContainer = styled.form`
 
     input {
       margin-bottom: 15px;
+      margin-top: 5px;
       padding: 8px;
       font-size: 1.2rem;
 
       border: none;
       border-radius: 8px;
-      
+
       width: 100%;
       height: 36px;
     }
@@ -53,9 +56,15 @@ export const FormContainer = styled.form`
       height: 40px;
 
       position: absolute;
-      bottom: 30px;
+      bottom: 40px;
 
-      font: 1.4rem 'Roboto', sans-serif;
+      border: none;
+      border-radius: 8px;
+      font: 1.4rem 'Ubuntu', sans-serif;
+    }
+
+    button:hover {
+      filter: brightness(0.9);
     }
   }
 `;
