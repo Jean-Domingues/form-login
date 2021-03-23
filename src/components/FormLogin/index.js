@@ -1,43 +1,49 @@
 import { Formik } from 'formik';
-import { Container, Form } from './styles';
+import { FormContainer, UserPhoto } from './styles';
+
+import UserImage from '../../assets/user.png';
 
 function FormLogin() {
   return (
-    <Container>
-      <h1>Bem vindo!</h1>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-      >
-        {({ handleChange, handleBlur }) => (
-          <Form>
-            <label>
-              Email:
-              <input
-                type="text"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
+      <FormContainer>
+        <UserPhoto>
+          <img src={UserImage} alt="Usuário" />
+        </UserPhoto>
+        <Formik
+          initialValues={{
+            email: '',
+            password: '',
+          }}
+        >
+          {({ handleChange, handleBlur }) => (
+            <form>
+              <label>
+                Email:
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </label>
 
-            <label>
-              Senha:
-              <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
-          </Form>
-        )}
-      </Formik>
-    </Container>
+              <label>
+                Senha:
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </label>
+
+              <button type="submit">Login</button>
+            </form>
+          )}
+        </Formik>
+      </FormContainer>
   );
 }
 

@@ -16,6 +16,8 @@ const GlobalStyles = createGlobalStyle`
     font-size: 62.5%; // 1rem = 10px
     background-color: #535353;
     color: #f3f3f3;
+    
+    font-family: 'Roboto', sans-serif;
   }
 
   .app-container {
