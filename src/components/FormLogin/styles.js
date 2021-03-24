@@ -12,7 +12,7 @@ export const UserPhoto = styled.header`
   }
 `;
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.main`
   background-color: var(--bg-secondary);
 
   display: flex;
@@ -32,6 +32,11 @@ export const FormContainer = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    div.error-box {
+      font-size: 1rem;
+      color: #E84141;
+    }
 
     label {
       width: 100%;

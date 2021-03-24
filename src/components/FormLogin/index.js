@@ -2,6 +2,7 @@ import { Formik } from 'formik';
 import { FormContainer, UserPhoto } from './styles';
 
 import UserImage from '../../assets/user.png';
+import validationSchema from './validationSchema';
 
 function FormLogin() {
   return (
@@ -14,9 +15,14 @@ function FormLogin() {
             email: '',
             password: '',
           }}
+          validationSchema={validationSchema}
+
+          onSubmit={ values => {
+            alert(JSON.stringify(values, null, 2));
+          }}
         >
-          {({ handleChange, handleBlur }) => (
-            <form>
+          {({ handleChange, handleBlur, touched, errors, handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
               <label>
                 Email:
                 <input
@@ -38,6 +44,13 @@ function FormLogin() {
                   onBlur={handleBlur}
                 />
               </label>
+              
+              { errors && (touched.email && touched.password) ?
+              <div className='error-box'>
+                  <div>{errors.email}</div>
+                  <div>{errors.password}</div>
+              </div> : null
+              }
 
               <button type="submit">Login</button>
             </form>
