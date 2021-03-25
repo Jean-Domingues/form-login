@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes, css } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -45,6 +45,30 @@ const GlobalStyles = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center
+  }
+`;
+
+
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+    }
+  100% {
+    transform: rotate(360deg);
+    }
+`;
+
+export const Loader = styled.div`
+  display: inline-block;
+  border: ${props => props.border} solid var(--dark-text);
+  border-radius: 50%;
+  border-top: ${props => props.border} solid #fff;
+  width: ${props => props.size};
+  height: ${props => props.size};
+  animation: ${spin} 2s linear infinite;
+
+  ${
+    props => props.margin && css`margin-left: ${props.margin}`
   }
 `;
 

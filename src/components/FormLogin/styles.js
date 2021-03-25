@@ -34,9 +34,9 @@ export const FormContainer = styled.main`
     align-items: center;
 
     div.error-box {
-      font-weight: bold;
-      font-size: 0.9rem;
-      color: #930000;
+      font-style: italic;
+      font-size: 1rem;
+      color: #DA2929;
     }
 
     label {
