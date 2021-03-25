@@ -6,8 +6,9 @@ import { FormContainer, UserPhoto } from './styles';
 
 import UserImage from '../../assets/user.png';
 import validationSchema from './validationSchema';
+import { AUTH_REQUEST } from '../../store/actions'
 
-function FormLogin({email}) {
+function FormLogin({ email, authRequest }) {
   return (
     <FormContainer>
       <UserPhoto>
@@ -20,13 +21,10 @@ function FormLogin({email}) {
           password: '',
         }}
         validationSchema={validationSchema}
-        onSubmit={(values, actions) => {
+        onSubmit={async (values, actions) => {
           actions.setSubmitting(true);
-          
-          setTimeout(() => {
-            actions.setSubmitting(false);
-            return actions.setErrors({ email: 'Email ou senha inválidos'})
-          }, 1000);
+          await authRequest()
+          actions.setErrors({ email: 'Email ou senha inválidos'})
         }}
       >
         {({ handleChange, handleBlur, touched, errors, handleSubmit, isSubmitting }) => (
@@ -75,4 +73,10 @@ const mapToStateProps = state => {
   return state
 }
 
-export default connect(mapToStateProps)(FormLogin);
+const mapDispatchToProps = dispatch => {
+  return {
+    authRequest: () => dispatch(AUTH_REQUEST)
+  }
+}
+
+export default connect(mapToStateProps, mapDispatchToProps)(FormLogin);

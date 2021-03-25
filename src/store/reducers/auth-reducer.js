@@ -4,7 +4,11 @@ const InitialState = {
 };
 
 function authReducer(state = InitialState, action) {
-  return { ...state };
+  if(action.type === 'auth/authSuccess') {
+    return {...state, email: 'foi'}
+  }
+
+  return {...state}
 }
 
 export default authReducer;
