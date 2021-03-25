@@ -1,16 +1,19 @@
 import { Formik } from 'formik';
+import { connect } from 'react-redux'
+
+import { Loader } from '../../style/GlobalStyles';
 import { FormContainer, UserPhoto } from './styles';
 
 import UserImage from '../../assets/user.png';
 import validationSchema from './validationSchema';
-import { Loader } from '../../style/GlobalStyles';
 
-function FormLogin() {
+function FormLogin({email}) {
   return (
     <FormContainer>
       <UserPhoto>
         <img src={UserImage} alt="Usuário" />
       </UserPhoto>
+      <div>{email}</div>
       <Formik
         initialValues={{
           email: '',
@@ -68,4 +71,8 @@ function FormLogin() {
   );
 }
 
-export default FormLogin;
+const mapToStateProps = state => {
+  return state
+}
+
+export default connect(mapToStateProps)(FormLogin);
