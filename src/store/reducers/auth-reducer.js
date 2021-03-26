@@ -5,7 +5,9 @@ const InitialState = {
 
 function authReducer(state = InitialState, action) {
   if(action.type === 'auth/authSuccess') {
-    return {...state, email: 'foi'}
+    return {...state, email: 'Ola mundo'} 
+  } else if ( action.type === 'auth/authFailed') {
+    return { ...state, error: action.payload }
   }
 
   return {...state}
