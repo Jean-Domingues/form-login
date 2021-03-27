@@ -22,9 +22,11 @@ function FormLogin({ email, authRequest }) {
         }}
         validationSchema={validationSchema}
         onSubmit={async (values, actions) => {
-          actions.setSubmitting(true);
-          await authRequest()
-          actions.setErrors({ email: 'Email ou senha inválidos'})
+          try {
+            authRequest()
+          } catch (e) {
+            actions.setErrors({ email: 'Email ou senha inválidos'})
+          }
         }}
       >
         {({ handleChange, handleBlur, touched, errors, handleSubmit, isSubmitting }) => (

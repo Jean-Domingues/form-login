@@ -12,7 +12,7 @@ function* login(action) {
     const dado = yield call(delay)
     yield put({type: 'auth/authSuccess', payload: dado});
   } catch {
-    yield put({type: 'auth/authFailed', payload: 'Deu erro'});
+    throw new Error('User unauthorized')
   }
 }
 
