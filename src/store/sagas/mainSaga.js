@@ -1,16 +1,8 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
-
-function delay(){
-  return new Promise((resolve, reject) => setTimeout(()=>{
-    return reject('oi')
-}, 1000))
-}
-
+import {put, takeLatest } from 'redux-saga/effects';
 
 function* login(action) {
   try {
-    const dado = yield call(delay)
-    yield put({type: 'auth/authSuccess', payload: dado});
+    yield put({type: 'auth/authSuccess'});
   } catch {
     throw new Error('User unauthorized')
   }

@@ -1,12 +1,12 @@
 import { Formik } from 'formik';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import { Loader } from '../../style/GlobalStyles';
 import { FormContainer, UserPhoto } from './styles';
 
 import UserImage from '../../assets/user.png';
-import validationSchema from './validationSchema';
-import { AUTH_REQUEST } from '../../store/actions'
+import loginSchema from '../../utils/validation/loginSchema';
+import { authValidation } from '../../store/actions';
 
 function FormLogin({ email, authRequest }) {
   return (
@@ -20,12 +20,14 @@ function FormLogin({ email, authRequest }) {
           email: '',
           password: '',
         }}
-        validationSchema={validationSchema}
-        onSubmit={async (values, actions) => {
+        validationSchema={loginSchema}
+        onSubmit={(values, actions) => {
           try {
-            authRequest()
+            authRequest(values);
+            actions.setSubmitting(false)
           } catch (e) {
-            actions.setErrors({ email: 'Email ou senha inválidos'})
+            actions.setSubmitting(false)
+            actions.setErrors({ email: e.message });
           }
         }}
       >
@@ -60,7 +62,7 @@ function FormLogin({ email, authRequest }) {
               </div>
             ) : null}
 
-            <button type="submit">
+            <button type="submit" disabled={isSubmitting}>
               Login
               {isSubmitting && <Loader size="15px" border="3px" margin="5px" />}
             </button>
@@ -71,14 +73,14 @@ function FormLogin({ email, authRequest }) {
   );
 }
 
-const mapToStateProps = state => {
-  return state
-}
+const mapToStateProps = (state) => {
+  return state;
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    authRequest: () => dispatch(AUTH_REQUEST)
-  }
-}
+    authRequest: (values) => authValidation(dispatch, values),
+  };
+};
 
 export default connect(mapToStateProps, mapDispatchToProps)(FormLogin);
