@@ -6,7 +6,7 @@ export const authValidation = (dispatch, { email, password}) => {
   const loginReferer = dados[email];
 
   if (loginReferer === password) {
-    dispatch({ type: 'auth/authRequest'});
+    dispatch({ type: 'auth/authSuccess'});
   } else {
     throw new Error('Email ou senha incorretos!');
   }
