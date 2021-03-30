@@ -1,7 +1,8 @@
 export const getItemStorage = (key) => {
   key = String(key)
-  const data = JSON.parse(localStorage.getItem(key))
-  return data;
+  const data = localStorage.getItem(key)
+  if (data) return JSON.stringify(data)
+  return null;
 }
 
 export const setItemStorage = (key, data) => {
