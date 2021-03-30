@@ -8,7 +8,7 @@ export const authValidation = (dispatch, { email, password}) => {
   const loginReferer = dados[email];
 
   if (loginReferer === password) {
-    setItemStorage('FormLoginAuth', String(email))
+    setItemStorage('FormLoginAuth', email)
     dispatch({ type: 'auth/authSuccess', payload: email});
   } else {
     throw new Error('Email ou senha incorretos!');
