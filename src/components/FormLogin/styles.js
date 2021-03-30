@@ -36,7 +36,7 @@ export const FormContainer = styled.main`
     div.error-box {
       font-style: italic;
       font-size: 1rem;
-      color: #DA2929;
+      color: var(--error);
     }
 
     label {
