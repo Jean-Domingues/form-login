@@ -6,11 +6,11 @@ import { Loader } from '../../style/GlobalStyles';
 import { FormContainer, UserPhoto } from './styles';
 
 import UserImage from '../../assets/user.png';
-import loginSchema from '../../utils/validation/loginSchema';
+import loginSchema from '../../validation/loginSchema';
 import { authValidation } from '../../store/actions';
 import { getItemStorage } from '../../utils/localStorage';
 
-function FormLogin({ email, name, age, authRequest, history }) {
+function FormLogin({ email, authRequest, history }) {
 
   if (email && getItemStorage('FormLoginAuth')) {
     return <Redirect to={{ pathname: '/dashboard' }} />;
