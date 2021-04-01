@@ -10,7 +10,7 @@ import loginSchema from '../../utils/validation/loginSchema';
 import { authValidation } from '../../store/actions';
 import { getItemStorage } from '../../utils/localStorage';
 
-function FormLogin({ email, authRequest, history }) {
+function FormLogin({ email, name, age, authRequest, history }) {
 
   if (email && getItemStorage('FormLoginAuth')) {
     return <Redirect to={{ pathname: '/dashboard' }} />;
