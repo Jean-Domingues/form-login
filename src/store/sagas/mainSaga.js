@@ -13,6 +13,7 @@ function* getDataFromBase(action) {
   }
 }
 
+
 function* mainSaga() {
   yield takeLatest('user/getData', getDataFromBase);
 }

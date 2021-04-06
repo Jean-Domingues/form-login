@@ -1,7 +1,12 @@
 import { connect } from 'react-redux'
 
-function Dashboard({ name, age, getUserData}){
-  if(!name) getUserData()
+import { emailValidation } from '../../store/actions'
+import { getItemStorage } from '../../utils/localStorage'
+
+function Dashboard({ name, age, getUserData, email, validateAuth}){
+  if(!email) getUserData()
+  console.log(email);
+  if(getItemStorage('FormLoginAuth') && !email) validateAuth()
 
   return (
     <h1>{`Olá ${name} você tem ${age} anos?`}</h1>
@@ -15,6 +20,7 @@ const mapToStateProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUserData: () => dispatch({ type: 'user/getData'}),
+    validateAuth: () => emailValidation(dispatch)
   };
 };
 
