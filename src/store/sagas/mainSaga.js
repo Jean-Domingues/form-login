@@ -9,7 +9,7 @@ function* getDataFromBase(action) {
     const dados = yield call(getData, email);
     yield put({ type: 'user/getDataUser', payload: dados });
   } catch {
-    throw new Error('User unauthorized');
+    return null
   }
 }
 

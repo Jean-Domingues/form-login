@@ -1,21 +1,21 @@
 const InitialState = {
   email: '',
   name: '',
-  age: 0
+  age: 0,
 };
 
 function authReducer(state = InitialState, action) {
-  if(action.type === 'auth/authSuccess') {
-    return {...state, ...action.payload } 
-  } 
-  if(action.type === 'user/getDataUser') {
-    return {...state, ...action.payload } 
-  } 
-  
-  if(action.type === 'auth/logout') {
-    return {...state } 
-  } 
-  return {...state}
+  switch (action.type) {
+    case 'auth/authSuccess':
+      return { ...state, ...action.payload };
+    case 'user/getDataUser':
+      return { ...state, ...action.payload };
+    case 'auth/logout':
+      return {...state }
+    default : {
+      return {...state}
+    }
+  }
 }
 
 export default authReducer;
