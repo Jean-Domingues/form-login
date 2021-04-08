@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import { emailValidation } from '../../store/actions'
 import { getItemStorage } from '../../utils/localStorage'
 
-function Dashboard({ name, age, getUserData, email, validateAuth}){
-  if(!email) getUserData()
-  console.log(email);
+function Dashboard({ name, age, email, validateAuth}){
+  // if(!email) getUserData()
   if(getItemStorage('FormLoginAuth') && !email) validateAuth()
 
   return (
@@ -19,7 +18,6 @@ const mapToStateProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUserData: () => dispatch({ type: 'user/getData'}),
     validateAuth: () => emailValidation(dispatch)
   };
 };
