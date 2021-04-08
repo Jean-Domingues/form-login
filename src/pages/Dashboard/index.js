@@ -4,7 +4,6 @@ import { emailValidation } from '../../store/actions'
 import { getItemStorage } from '../../utils/localStorage'
 
 function Dashboard({ name, age, email, validateAuth}){
-  // if(!email) getUserData()
   if(getItemStorage('FormLoginAuth') && !email) validateAuth()
 
   return (

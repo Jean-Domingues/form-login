@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, all } from 'redux-saga/effects';
 
 import getData from '../../utils/getData';
 import { getItemStorage } from '../../utils/localStorage';
@@ -13,9 +13,19 @@ function* getDataFromBase(action) {
   }
 }
 
+function* helloSaga(){
+  console.log('Olá sagas');
+}
+
+function* watchGetDataFromBase(){
+  yield takeLatest('user/getData', getDataFromBase);
+}
 
 function* mainSaga() {
-  yield takeLatest('user/getData', getDataFromBase);
+  yield all([
+    helloSaga(),
+    watchGetDataFromBase()
+  ])
 }
 
 export default mainSaga;
