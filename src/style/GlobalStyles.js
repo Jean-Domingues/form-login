@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     --text: #FFFBFC;
     --title: #f3f3f3;
     --dark-text: #352D39;
-    --primary: #324A5F;
+    --primary: #28b5b5;
     --secondary: #E1E2EF;
     --error: #BF3100;
   }
@@ -44,6 +44,7 @@ const GlobalStyles = createGlobalStyle`
 
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center
   }
 `;
