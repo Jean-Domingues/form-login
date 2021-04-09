@@ -1,14 +1,17 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import { emailValidation } from '../../store/actions'
-import { getItemStorage } from '../../utils/localStorage'
+import { emailValidation, logout } from '../../store/actions';
+import { getItemStorage } from '../../utils/localStorage';
 
-function Dashboard({ name, age, email, validateAuth}){
-  if(getItemStorage('FormLoginAuth') && !email) validateAuth()
+function Dashboard({ name, age, email, validateAuth, logout }) {
+  if (getItemStorage('FormLoginAuth') && !email) validateAuth();
 
   return (
-    <h1>{`Olá ${name} você tem ${age} anos?`}</h1>
-  )
+    <div>
+      <h1>{`Olá ${name} você tem ${age} anos?`}</h1>
+      <button onClick={logout}>Sair</button>
+    </div>
+  );
 }
 
 const mapToStateProps = (state) => {
@@ -17,8 +20,9 @@ const mapToStateProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    validateAuth: () => emailValidation(dispatch)
+    validateAuth: () => emailValidation(dispatch),
+    logout: () => logout(dispatch),
   };
 };
 
-export default connect(mapToStateProps, mapDispatchToProps)(Dashboard)
+export default connect(mapToStateProps, mapDispatchToProps)(Dashboard);

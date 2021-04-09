@@ -5,7 +5,7 @@ export const UserPhoto = styled.header`
   top: -20%;
   left: 50%;
 
-  img {
+  img { 
     border-radius: 50%;
     width: 150px;
     transform: translateX(-50%);
@@ -13,7 +13,7 @@ export const UserPhoto = styled.header`
 `;
 
 export const FormContainer = styled.main`
-  background-color: var(--bg-secondary);
+  background-color: transparent;
 
   display: flex;
   flex-direction: column;

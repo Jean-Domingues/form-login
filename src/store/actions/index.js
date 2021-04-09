@@ -29,9 +29,7 @@ export const emailValidation = (dispatch) => {
     if (rest) {
       dispatch({ type: 'auth/authSuccess', payload: rest });
     } else {
-      localStorage.removeItem('FormLoginAuth');
-      window.location.href = '/';
-      dispatch({ type: 'auth/logout' });
+      logout(dispatch)
     }
   } catch (e) {
     localStorage.removeItem('FormLoginAuth');
@@ -39,3 +37,9 @@ export const emailValidation = (dispatch) => {
     dispatch({ type: 'auth/logout' });
   }
 };
+
+export const logout = dispatch => {
+  localStorage.removeItem('FormLoginAuth');
+  window.location.href = '/';
+  dispatch({ type: 'auth/logout' });
+}
