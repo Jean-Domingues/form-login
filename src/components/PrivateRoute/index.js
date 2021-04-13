@@ -1,12 +1,12 @@
 import { Route, Redirect } from 'react-router-dom';
 import { getItemStorage } from '../../utils/localStorage'
 
-export default function PrivateRoute ({component: RenderComponent,...rest}) {
+export default function PrivateRoute ({component: MyComponent,...rest}) {
   return (
     <Route
     {...rest}
     render={ props => getItemStorage('FormLoginAuth') ? (
-      <RenderComponent {...props} />
+      <MyComponent {...props} />
     ) : (
       <Redirect
         to={{

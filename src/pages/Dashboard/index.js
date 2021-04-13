@@ -5,7 +5,7 @@ import { getItemStorage } from '../../utils/localStorage';
 
 import { Button } from './styles'
 
-function Dashboard({ name, age, email, validateAuth, logout }) {
+function Dashboard({ name, email, validateAuth, logout }) {
   if (getItemStorage('FormLoginAuth') && !email) validateAuth();
 
   return (
