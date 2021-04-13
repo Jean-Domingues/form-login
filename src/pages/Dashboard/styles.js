@@ -19,6 +19,6 @@ export const Button = styled.button`
   transition: all .2s;
 
   &:hover {
-    background-color: #9dbeb9;
+    background-color: var(--secondary);
   }
 `

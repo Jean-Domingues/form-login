@@ -5,7 +5,7 @@ export const UserPhoto = styled.header`
   top: -20%;
   left: 50%;
 
-  img { 
+  img {
     border-radius: 50%;
     width: 150px;
     transform: translateX(-50%);
@@ -67,10 +67,15 @@ export const FormContainer = styled.main`
       border: none;
       border-radius: 8px;
       font: 1.4rem 'Ubuntu', sans-serif;
-    }
 
-    button:hover {
-      filter: brightness(0.9);
+      color: var(--text);
+      background-color: var(--primary);
+
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: var(--secondary);
+      }
     }
   }
 `;
