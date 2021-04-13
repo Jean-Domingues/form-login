@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     --dark-text: #352D39;
     --primary: #28b5b5;
     --secondary: #9dbeb9;
-    --error: #FF0000;
+    --error: #cc0000;
   }
 
   html, body, #root {
